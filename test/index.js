@@ -1,6 +1,7 @@
 import assert from 'assert'
 import selector from '../src'
 import h from 'snabbdom/h'
+import thunk from 'snabbdom/thunk'
 
 describe('snabbdom-selector', () => {
   it('should return a vnode by className from selector', done => {
@@ -106,6 +107,16 @@ describe('snabbdom-selector', () => {
     ])
     const result = selector('div[test=1]', vnode)
     assert.strictEqual(result[0].sel, 'div#test')
+    done()
+  })
+
+  it('should be able to match thunks', done => {
+    const exampleThunk = number => h('h2.thunk', {}, `${number}`)
+    const vnode = h('div#test', [
+      thunk('thunk', exampleThunk, 7)
+    ])
+    const result = selector('.thunk', vnode)
+    assert.strictEqual(result[0].sel, 'h2.thunk')
     done()
   })
 
