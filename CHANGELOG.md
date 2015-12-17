@@ -1,3 +1,12 @@
+# v0.3.1 (2015-12-17)
+
+
+## Bug Fixes
+
+- **thunks:** fix selecting of thunks
+  ([7326a70a](https://github.com/git+https://github.com/tylors/snabbdom-selector.git/commits/7326a70a47a3b897f77cf73d98e893a04382a3c1))
+
+
 # v0.3.0 (2015-12-17)
 
 
