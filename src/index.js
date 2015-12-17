@@ -26,7 +26,12 @@ function match(sel, vnode) {
   let wrappedVnode = wrapVnode(vnode)
 
   traverse(wrappedVnode, node => {
-    let result = selector(node)
+    let result
+    if (node.sel.indexOf(`thunk`) !== -1) {
+      result = selector(node.data.fn(...node.data.args))
+    } else {
+      result = selector(node)
+    }
     if (result) {
       if (!Array.isArray(result)) {
         result = [result]
