@@ -3,7 +3,7 @@ import split from 'browser-split'
 const classIdSplit = /([\.#]?[a-zA-Z0-9\u007F-\uFFFF_:-]+)/
 const notClassId = /^\.|#/
 
-export default function parseSelector(selector = ``) {
+export default function selectorParser(selector = ``) {
   let tagName
   let id = ``
   let classes = []

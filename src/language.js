@@ -1,40 +1,48 @@
 import cssauron from 'cssauron'
-import parseSelector from './parseSelector'
-import getClasses from './getClasses'
+import selectorParser from './selectorParser'
+import classNameFromVNode from './classNameFromVNode'
 
-const language = cssauron({
-  tag(node) {
-    return parseSelector(node.sel).tagName
-  },
-  class(node) {
-    return getClasses(node)
-  },
-  id(node) {
-    if (node.data && node.data.props && node.data.props.id) {
-      return node.data.props.id
+function LanguageSpecification() {}
+
+LanguageSpecification.prototype.tag = function tag(vNode) {
+  return selectorParser(vNode.sel).tagName
+}
+
+LanguageSpecification.prototype.class = function klass(vNode) {
+  return classNameFromVNode(vNode)
+}
+
+LanguageSpecification.prototype.id = function id(vNode) {
+  if (vNode.data && vNode.data.props && vNode.data.props.id) {
+    return vNode.data.props.id
+  }
+  return selectorParser(vNode.sel).id
+}
+
+LanguageSpecification.prototype.children = function children(vNode) {
+  return vNode.children || []
+}
+
+LanguageSpecification.prototype.parent = function parent(vNode) {
+  return vNode.parent || vNode
+}
+
+LanguageSpecification.prototype.contents = function contents(vNode) {
+  return vNode.text
+}
+
+LanguageSpecification.prototype.attr = function attributes(vNode, attr) {
+  if (vNode.data) {
+    const {attrs = {}, props = {}} = vNode.data
+    if (attrs[attr]) {
+      return attrs[attr]
     }
-    return parseSelector(node.sel).id
-  },
-  children(node) {
-    return node.children || []
-  },
-  parent(node) {
-    return node.parent || node
-  },
-  contents(node) {
-    return node.text
-  },
-  attr(node, attr) {
-    if (node.data) {
-      const {attrs = {}, props = {}} = node.data
-      if (attrs[attr]) {
-        return attrs[attr]
-      }
-      if (props[attr]) {
-        return props[attr]
-      }
+    if (props[attr]) {
+      return props[attr]
     }
-  },
-})
+  }
+}
+
+const language = cssauron(new LanguageSpecification())
 
 export default language

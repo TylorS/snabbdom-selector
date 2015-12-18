@@ -12,6 +12,35 @@ describe('snabbdom-selector', () => {
     done()
   })
 
+  it('should return a vNode by className from props', done => {
+    const vNode = h('div', {props: {className: 'test'}}, 'test')
+    const result = selector('.test', vNode)
+    assert.strictEqual(result[0].sel, 'div')
+    assert.strictEqual(result[0].data.props.className, 'test')
+    assert.strictEqual(result[0].text, 'test')
+    done()
+  })
+
+  it('should return a vNode by classnNme from class module', done => {
+    const vNode = h('div', {class: {test: true}}, 'test')
+    const result = selector('.test', vNode)
+    assert.strictEqual(result[0].sel, 'div')
+    assert.strictEqual(result[0].data.class.test, true)
+    assert.strictEqual(result[0].text, 'test')
+    done()
+  })
+
+  it('should return a vNode by className from all 3', done => {
+    const vNode = h('div.test', {
+      props: {className: 'anotherTest'},
+      class: {theRealTest: true },
+    }, 'test')
+    const result = selector('.test.anotherTest.theRealTest', vNode)
+    assert.strictEqual(result[0].sel, `div.test`)
+    assert.strictEqual(result[0].text, 'test')
+    done()
+  })
+
   it('should return a vnode by ID from selector', done => {
     const vnode = h('div#test', {}, 'test')
     const result = selector('#test', vnode)
