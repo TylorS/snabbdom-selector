@@ -1,31 +1,30 @@
 import language from './language'
 
-function traverse(vtree, fn) {
-  fn(vtree)
-  if (vtree.children) {
-    vtree.children.forEach(child => {
+function traverse(vNode, fn) {
+  fn(vNode)
+  if (vNode.children) {
+    vNode.children.forEach(child => {
       traverse(child, fn)
     })
   }
 }
 
-function wrapVnode(vnode, parent) {
-  let {sel, children, data, text, elm, key} = vnode
-  let wrappedVnode = {sel, data, text, elm, key, parent}
+function wrapVNode(vNode, parent) {
+  let {children} = vNode
   if (children && typeof children.map === `function`) {
-    children = children.map(k => wrapVnode(k, wrappedVnode)).filter(Boolean)
+    children = children.map(k => wrapVNode(k, vNode))
   }
-  wrappedVnode.children = children
-  return wrappedVnode
+  vNode.parent = parent
+  return vNode
 }
 
-function match(sel, vnode) {
+function match(sel, vNode) {
   const selector = language(sel)
   let matched = []
 
-  let wrappedVnode = wrapVnode(vnode)
+  let wrappedVNode = wrapVNode(vNode)
 
-  traverse(wrappedVnode, node => {
+  traverse(wrappedVNode, node => {
     let result
     if (node.data && node.data.vnode) {
       result = selector(node.data.vnode)
