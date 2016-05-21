@@ -16,6 +16,9 @@ LanguageSpecification.prototype.id = function id(vNode) {
   if (vNode.data && vNode.data.props && vNode.data.props.id) {
     return vNode.data.props.id
   }
+  else if (vNode.data && vNode.data.attrs && vNode.data.attrs.id) {
+    return vNode.data.attrs.id
+  }
   return selectorParser(vNode.sel).id
 }
 
