@@ -1,3 +1,12 @@
+# v0.4.0 (2016-05-21)
+
+
+## Features
+
+- **atts:** check for id in attrs module
+  ([0d471e74](https://github.com/git+https://github.com/tylors/snabbdom-selector.git/commits/0d471e74d3a1fd95374138cc75a75db9c7941c85))
+
+
 # v0.3.2 (2015-12-18)
 
 
