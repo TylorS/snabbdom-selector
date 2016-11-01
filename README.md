@@ -1,4 +1,4 @@
-# Snabbdom Selector
+# Snabbdom Selector [![ComVer](https://img.shields.io/badge/ComVer-compliant-brightgreen.svg)](https://github.com/staltz/comver)
 
 `snabbdom-selector` is a utility tool, written in TypeScript,
 to find snabbdom VNode objects matching a given CSS Selector.
@@ -80,3 +80,7 @@ const vNode = h('div.foo', { class: { bar: true } }, [])
 
 console.log(classNameFromVNode(vNode)) // 'foo bar'
 ```
+
+## Versioning
+This library uses [compatible versioning](https://github.com/staltz/comver), a versioning system
+that is backwards compatible with semantic-versioning.
