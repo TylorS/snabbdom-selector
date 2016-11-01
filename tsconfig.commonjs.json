@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "types": [],
+    "outDir": "lib/commonjs"
+  },
+  "files": [
+    "custom-typings/cssauron.d.ts",
+    "src/index.ts"
+  ]
+}
