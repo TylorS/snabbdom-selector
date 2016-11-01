@@ -1,8 +1,8 @@
-import snabbdom = require('snabbdom');
+import * as snabbdom from 'snabbdom';
 import { selectorParser  } from './selectorParser';
 
 export function classNameFromVNode(vNode: snabbdom.VNode): string {
-  let { className: cn } = selectorParser(vNode);
+  let { className: cn = '' } = selectorParser(vNode);
 
   if (!vNode.data) {
     return cn;
@@ -12,7 +12,7 @@ export function classNameFromVNode(vNode: snabbdom.VNode): string {
 
   if (dataClass) {
     const c = Object.keys(dataClass)
-      .filter(cl => dataClass[cl]);
+      .filter((cl: string) => dataClass[cl]);
 
     cn += ` ${c.join(` `)}`;
   }
@@ -21,5 +21,5 @@ export function classNameFromVNode(vNode: snabbdom.VNode): string {
     cn += ` ${props.className}`;
   }
 
-  return cn.trim();
+  return cn && cn.trim();
 }

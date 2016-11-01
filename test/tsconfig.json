@@ -18,6 +18,7 @@
     ]
   },
   "files": [
+    "../custom-typings/cssauron.d.ts",
     "./index.ts"
   ]
 }

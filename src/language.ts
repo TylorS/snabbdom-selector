@@ -1,5 +1,3 @@
-/// <reference path="./cssauron.d.ts" />
-
 import * as cssauron from 'cssauron';
 import * as snabbdom from 'snabbdom';
 import { selectorParser } from './selectorParser';
@@ -10,7 +8,7 @@ export const language = cssauron({
   class: (vNode: snabbdom.VNode) => classNameFromVNode(vNode),
   id: (vNode: snabbdom.VNode) => selectorParser(vNode).id,
   children: (vNode: snabbdom.VNode) => vNode.children || [],
-  parent: (vNode: snabbdom.VNode) => (vNode as any).parent || vNode,
+  parent: (vNode: snabbdom.VNode) => (vNode.data as any).parent || vNode,
   contents: (vNode: snabbdom.VNode) => vNode.text,
   attr (vNode: snabbdom.VNode, attr: string) {
     if (vNode.data) {

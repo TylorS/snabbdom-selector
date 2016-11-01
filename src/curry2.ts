@@ -1,4 +1,4 @@
-import snabbdom = require('snabbdom');
+import * as snabbdom from 'snabbdom';
 import { Select, Selector } from './types';
 
 export function curry2 (select: Select): Selector {

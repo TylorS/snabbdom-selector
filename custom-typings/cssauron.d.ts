@@ -1,11 +1,11 @@
-declare module "cssauron" {
+declare module 'cssauron' {
   type Language = {
     tag: (node: any) => string;
-    class: (node: any) => string;
-    id: (node: any) => string;
+    class: (node: any) => string | undefined;
+    id: (node: any) => string | undefined;
     children: (node: any) => any[];
     parent: (node: any) => any;
-    contents: (node: any) => string;
+    contents: (node: any) => string | undefined;
     attr: (node: any, attr: string) => any;
   };
 

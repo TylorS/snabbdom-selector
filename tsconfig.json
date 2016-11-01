@@ -2,7 +2,8 @@
   "compilerOptions": {
     "declaration": true,
     "lib": [
-      "dom"
+      "dom",
+      "es5"
     ],
     "moduleResolution": "node",
     "module": "es2015",
@@ -15,6 +16,7 @@
     "outDir": "lib/es2015"
   },
   "files": [
+    "custom-typings/cssauron.d.ts",
     "src/index.ts"
   ]
 }

@@ -16,6 +16,7 @@
     "outDir": "lib/commonjs"
   },
   "files": [
+    "custom-typings/cssauron.d.ts",
     "src/index.ts"
   ]
 }
