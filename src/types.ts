@@ -1,9 +1,9 @@
-import * as snabbdom from 'snabbdom';
+import { VNode } from 'snabbdom/vnode';
 
 export interface Selector {
-  (selector: string, vNode: snabbdom.VNode): Array<snabbdom.VNode>;
-  (selector: string): (vNode: snabbdom.VNode) => Array<snabbdom.VNode>;
+  (selector: string, vNode: VNode): Array<VNode>;
+  (selector: string): (vNode: VNode) => Array<VNode>;
 }
 
 export type Select =
-  (selector: string, vNode: snabbdom.VNode) => snabbdom.VNode[];
+  (selector: string, vNode: VNode) => Array<VNode>;

@@ -1,21 +1,10 @@
 import * as assert from 'assert';
 import { select } from '../src';
-import snabbdom = require('snabbdom');
+import { VNode } from 'snabbdom/vnode';
+import h from 'snabbdom/h';
+import thunk from 'snabbdom/thunk';
 
-type hyperscript =
-  (selector: string, data: any,
-   children: snabbdom.VNode[] | string | undefined) => snabbdom.VNode;
-
-const h: hyperscript = require('snabbdom/h');
-
-type thunkHelper =
-  (selector: string, key: string,
-   render: (...args: any[]) => snabbdom.VNode,
-   ...args: any[]) => snabbdom.VNode
-
-const thunk: thunkHelper = require('snabbdom/thunk');
-
-function div (children: snabbdom.VNode[] = []): snabbdom.VNode {
+function div (children: VNode[] = []): VNode {
   return h('div', {}, children);
 }
 
@@ -57,7 +46,6 @@ describe('select', () => {
       assert.strictEqual(result[0].sel, 'div');
       assert.strictEqual((result[0].data as any).props.className, 'test');
     });
-
 
     it('should return a vNode by className from class module', () => {
       const vNode = h('div', { class: { test: true } }, []);
@@ -116,7 +104,6 @@ describe('select', () => {
         h('p.foo', {}, []),
       ]);
 
-
       const result = select('div + .foo', vNode);
       assert.strictEqual(result[0].sel, 'p.foo');
     });
@@ -144,7 +131,7 @@ describe('select', () => {
     it('should be able to match thunks', () => {
       const exampleThunk = () => h('h2.thunk', {}, []);
       const vNode = h('div#test', {}, [
-        thunk('div', 'thunk', exampleThunk, 7),
+        thunk('div', 'thunk', exampleThunk, [7]),
       ]);
 
       const result = select('.thunk', vNode);
@@ -183,7 +170,7 @@ describe('select', () => {
       });
 
       it('should match using `:nth-child`', () => {
-        let children: snabbdom.VNode[] = [];
+        let children: VNode[] = [];
         for (let i = 0; i < 40; ++i) {
           children[i] = h('p', {}, `${i}`);
         }

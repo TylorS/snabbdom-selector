@@ -1,7 +1,7 @@
-import * as snabbdom from 'snabbdom';
-import { selectorParser  } from './selectorParser';
+import { VNode } from 'snabbdom/vnode';
+import { selectorParser } from './selectorParser';
 
-export function classNameFromVNode(vNode: snabbdom.VNode): string {
+export function classNameFromVNode(vNode: VNode): string {
   let { className: cn = '' } = selectorParser(vNode);
 
   if (!vNode.data) {
