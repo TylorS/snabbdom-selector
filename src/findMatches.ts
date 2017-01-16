@@ -1,13 +1,13 @@
-import * as snabbdom from 'snabbdom';
+import { VNode } from 'snabbdom/vnode';
 import { language } from './language';
 
-export function findMatches (cssSelector: string, vNode: snabbdom.VNode): Array<snabbdom.VNode> {
+export function findMatches (cssSelector: string, vNode: VNode): Array<VNode> {
   const selector = language(cssSelector);
-  const matches: snabbdom.VNode[] = [];
+  const matches: VNode[] = [];
 
   traverseVNode(vNode, addParent); // add mapping to the parent selectorParser
 
-  traverseVNode(vNode, function (currentNode: snabbdom.VNode) {
+  traverseVNode(vNode, function (currentNode: VNode) {
     const { data } = currentNode;
 
     let result: any;
@@ -36,12 +36,12 @@ export function findMatches (cssSelector: string, vNode: snabbdom.VNode): Array<
   return matches;
 }
 
-function traverseVNode (vNode: snabbdom.VNode,
-                        f: (vNode: snabbdom.VNode,
+function traverseVNode (vNode: VNode,
+                        f: (vNode: VNode,
                             root: boolean,
-                            parent?: snabbdom.VNode) => any): void {
+                            parent?: VNode) => any): void {
 
-  function recurse (currentNode: snabbdom.VNode, isParent: boolean, parentVNode?: snabbdom.VNode) {
+  function recurse (currentNode: VNode, isParent: boolean, parentVNode?: VNode) {
     const length = currentNode.children && currentNode.children.length || 0;
 
     for (let i = 0; i < length; ++i) {
@@ -49,7 +49,7 @@ function traverseVNode (vNode: snabbdom.VNode,
 
       if (children && typeof children[i] !== 'string') {
         const child = children[i];
-        recurse(child as snabbdom.VNode, false, currentNode);
+        recurse(child as VNode, false, currentNode);
       }
     }
 
@@ -59,7 +59,7 @@ function traverseVNode (vNode: snabbdom.VNode,
   recurse(vNode, true);
 }
 
-function addParent (vNode: snabbdom.VNode, isParent: boolean, parent?: snabbdom.VNode): void {
+function addParent (vNode: VNode, isParent: boolean, parent?: VNode): void {
   if (isParent) { return void 0; }
 
   if (!vNode.data) {
