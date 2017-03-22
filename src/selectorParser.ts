@@ -1,6 +1,14 @@
 import { VNode } from 'snabbdom/vnode';
 
-export function selectorParser ({ sel }: VNode) {
+export function selectorParser (node: VNode) {
+  if (!node.sel) {
+    return {
+      tagName: '',
+      id: '',
+      className: '',
+    };
+  }
+  const { sel } = node;
   const hashIdx = (sel as string).indexOf('#');
   const dotIdx = (sel as string).indexOf('.', hashIdx);
   const hash = hashIdx > 0 ? hashIdx : (sel as string).length;

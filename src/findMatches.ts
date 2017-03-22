@@ -45,7 +45,7 @@ function traverseVNode (vNode: VNode,
     const length = currentNode.children && currentNode.children.length || 0;
 
     for (let i = 0; i < length; ++i) {
-      const { children } = vNode;
+      const { children } = currentNode;
 
       if (children && typeof children[i] !== 'string') {
         const child = children[i];
