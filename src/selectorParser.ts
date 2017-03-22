@@ -1,11 +1,11 @@
 import { VNode } from 'snabbdom/vnode';
 
-export function selectorParser (node : VNode) {
-  if(!node.sel) {
+export function selectorParser (node: VNode) {
+  if (!node.sel) {
     return {
       tagName: '',
       id: '',
-      className: ''
+      className: '',
     };
   }
   const { sel } = node;
