@@ -22,6 +22,11 @@ describe('select', () => {
   });
 
   describe('given a selector and a VNode', () => {
+
+    it('should ignore falsy children', () => {
+      assert.ok(select('', h('div', [, h('div')])));
+    });
+
     it('should return an array of matching vNodes', () => {
       const vNode = h('div', {}, [
         h('h1.matches', {}, []),
@@ -138,7 +143,7 @@ describe('select', () => {
       assert.strictEqual(result[0].sel, 'h2.thunk');
     });
 
-    describe('psuedo-selector', () => {
+    describe('pseudo-selector', () => {
       it('should match using `:first-child`', () => {
         const vNode = div([
           h('p.foo', {}, []),

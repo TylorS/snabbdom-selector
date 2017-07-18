@@ -47,7 +47,7 @@ function traverseVNode (vNode: VNode,
     for (let i = 0; i < length; ++i) {
       const { children } = currentNode;
 
-      if (children && typeof children[i] !== 'string') {
+      if (children && children[i] && typeof children[i] !== 'string') {
         const child = children[i];
         recurse(child as VNode, false, currentNode);
       }
