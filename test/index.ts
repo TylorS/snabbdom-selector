@@ -143,7 +143,7 @@ describe('select', () => {
       assert.strictEqual(result[0].sel, 'h2.thunk');
     });
 
-    describe('psuedo-selector', () => {
+    describe('pseudo-selector', () => {
       it('should match using `:first-child`', () => {
         const vNode = div([
           h('p.foo', {}, []),
