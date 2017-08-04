@@ -2,17 +2,13 @@
   "name": "snabbdom-selector",
   "version": "1.2.1",
   "description": "Snabbdom CSS-Selector",
-  "main": "lib/commonjs/index.js",
-  "jsnext:main": "lib/es2015/index.js",
-  "module": "lib/es2015/index.js",
-  "typings": "lib/es2015/index.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "test:lint": "tslint src/*.ts src/**/*.ts",
     "test:unit": "cross-env TS_NODE_PROJECT=./test/tsconfig.json mocha -r ts-node/register test/*.ts",
     "test": "npm run test:lint && npm run test:unit",
-    "build:commonjs": "tsc -P tsconfig.commonjs.json",
-    "build:es2015": "tsc -P tsconfig.json",
-    "build": "npm run build:commonjs && npm run build:es2015"
+    "build": "tsc -P tsconfig.json"
   },
   "repository": {
     "type": "git",

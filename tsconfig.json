@@ -3,17 +3,17 @@
     "declaration": true,
     "lib": [
       "dom",
-      "es5"
+      "es2015"
     ],
     "moduleResolution": "node",
-    "module": "es2015",
-    "target": "es2015",
+    "module": "commonjs",
+    "target": "es5",
     "noImplicitAny": true,
     "sourceMap": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "types": [],
-    "outDir": "lib/es2015"
+    "outDir": "lib"
   },
   "files": [
     "custom-typings/cssauron.d.ts",
