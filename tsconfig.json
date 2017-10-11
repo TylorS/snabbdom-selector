@@ -16,7 +16,6 @@
     "outDir": "lib"
   },
   "files": [
-    "custom-typings/cssauron.d.ts",
     "src/index.ts"
   ]
 }

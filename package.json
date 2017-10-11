@@ -36,6 +36,6 @@
     "typescript": "2.0.6"
   },
   "dependencies": {
-    "cssauron": "^1.4.0"
+    "cssauron2": "^2.0.1"
   }
 }

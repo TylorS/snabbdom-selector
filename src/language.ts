@@ -1,4 +1,4 @@
-import * as cssauron from 'cssauron';
+import cssauron from 'cssauron2';
 import { VNode } from 'snabbdom/vnode';
 import { selectorParser } from './selectorParser';
 import { classNameFromVNode } from './classNameFromVNode';
