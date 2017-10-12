@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-selector",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Snabbdom CSS-Selector",
   "main": "lib/index.js",
   "module": "lib/es6/index.js",
