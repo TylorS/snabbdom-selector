@@ -11,7 +11,8 @@
     "test": "npm run test:lint && npm run test:unit",
     "build:cjs": "tsc -P tsconfig.json --module commonjs",
     "build:es6": "tsc -P tsconfig.json --module es6 --outDir lib/es6",
-    "build": "npm run build:cjs && npm run build:es6"
+    "build": "npm run build:cjs && npm run build:es6",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
