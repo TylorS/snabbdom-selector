@@ -1,5 +1,6 @@
 import { VNode } from 'snabbdom/vnode';
 import { language } from './language';
+import parentSymbol from './parent-symbol';
 
 export function findMatches (cssSelector: string, vNode: VNode): Array<VNode> {
   const selector = language(cssSelector);
@@ -66,7 +67,9 @@ function addParent (vNode: VNode, isParent: boolean, parent?: VNode): void {
     vNode.data = {};
   }
 
-  if (!(vNode.data as any).parent) {
-    (vNode.data as any).parent = parent;
+  if (!vNode.data[parentSymbol]) {
+    Object.defineProperty(vNode.data, parentSymbol, {
+      value: parent,
+    });
   }
 }
