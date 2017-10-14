@@ -186,5 +186,21 @@ describe('select', () => {
         assert.strictEqual(result[0].text, '29');
       });
     });
+
+    it('should not mutate the vNode tree visibly', () => {
+      const tree1 = h('div', {}, [
+        h('h1.matches', {}, []),
+        h('h2.nomatches', {}, []),
+        h('h3.matches', {}, []),
+      ]);
+      const tree2 = h('div', {}, [
+        h('h1.matches', {}, []),
+        h('h2.nomatches', {}, []),
+        h('h3.matches', {}, []),
+      ]);
+
+      select('h1', tree1);
+      assert.deepStrictEqual(tree1, tree2);
+    });
   });
 });
