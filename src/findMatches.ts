@@ -1,40 +1,11 @@
 import { VNode } from 'snabbdom/vnode';
-import { language } from './language';
+import { querySelector } from './query';
 import parentSymbol from './parent-symbol';
 
 export function findMatches (cssSelector: string, vNode: VNode): Array<VNode> {
-  const selector = language(cssSelector);
-  const matches: VNode[] = [];
-
   traverseVNode(vNode, addParent); // add mapping to the parent selectorParser
 
-  traverseVNode(vNode, function (currentNode: VNode) {
-    const { data } = currentNode;
-
-    let result: any;
-
-    if (data && data.fn) {
-      if (Array.isArray(data.args)) {
-        result = selector(data.fn.apply(null, data.args));
-      } else if (data.args) {
-        result = selector(data.fn.call(null, data.args));
-      } else {
-        result = selector(data.fn());
-      }
-    } else {
-      result = selector(currentNode);
-    }
-
-    if (result) {
-      if (!Array.isArray(result)) {
-        result = [result];
-      }
-
-      matches.push.apply(matches, result);
-    }
-  });
-
-  return matches;
+  return querySelector(cssSelector, vNode);
 }
 
 function traverseVNode (vNode: VNode,

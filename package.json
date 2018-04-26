@@ -40,6 +40,6 @@
     "typescript": "2.0.6"
   },
   "dependencies": {
-    "cssauron2": "^2.0.1"
+    "tree-selector": "^1.1.0"
   }
 }
