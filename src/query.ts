@@ -14,12 +14,15 @@ const options: Options<VNode> = {
   contents: (vNode: VNode) => vNode.text || '',
   attr (vNode: VNode, attr: string) {
     if (vNode.data) {
-      const { attrs = {}, props = {} } = vNode.data;
+      const { attrs = {}, props = {}, dataset = {} } = vNode.data;
       if (attrs[attr]) {
         return attrs[attr];
       }
       if (props[attr]) {
         return props[attr];
+      }
+      if (attr.indexOf('data-') === 0 && dataset[attr.slice(5)]) {
+        return dataset[attr.slice(5)];
       }
     }
   },
