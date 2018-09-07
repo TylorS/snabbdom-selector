@@ -40,6 +40,6 @@
     "typescript": "2.0.6"
   },
   "dependencies": {
-    "tree-selector": "^1.2.0"
+    "tree-selector": "^2.0.0"
   }
 }
