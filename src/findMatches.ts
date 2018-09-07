@@ -2,7 +2,10 @@ import { VNode } from 'snabbdom/vnode';
 import { querySelector } from './query';
 import parentSymbol from './parent-symbol';
 
-export function findMatches (cssSelector: string, vNode: VNode): Array<VNode> {
+export function findMatches (cssSelector: string, vNode: VNode | undefined): Array<VNode> {
+  if (!vNode) {
+    return [];
+  }
   traverseVNode(vNode, addParent); // add mapping to the parent selectorParser
 
   return querySelector(cssSelector, vNode);
