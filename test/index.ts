@@ -131,13 +131,17 @@ describe('select', () => {
         h('p.foo', {}, []),
       ]);
 
-      const result = select('div[foo=1]', vNode);
-      const result2 = select('div[foo=foo]', vNode2);
-      const result3 = select('div[foo="foo"]', vNode2);
+      const tests = [
+        { selector: 'div[foo=1]', vNode: vNode },
+        { selector: 'div[foo=foo]', vNode: vNode2 },
+        { selector: 'div[foo="foo"]', vNode: vNode2 },
+        { selector: 'div[foo]', vNode: vNode2 },
+      ]
 
-      assert.strictEqual(result[0].sel, 'div#test');
-      assert.strictEqual(result2[0].sel, 'div#test');
-      assert.strictEqual(result2[0].sel, 'div#test');
+      tests.forEach(({ selector, vNode }) => {
+        const result = select(selector, vNode);
+        assert.strictEqual(result[0].sel, 'div#test');
+      });
     });
 
     it('should be able to match thunks', () => {
