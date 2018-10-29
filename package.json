@@ -12,6 +12,7 @@
     "build:cjs": "tsc -P tsconfig.json --module commonjs",
     "build:es6": "tsc -P tsconfig.json --module es6 --outDir lib/es6",
     "build": "npm run build:cjs && npm run build:es6",
+    "postbuild": "sed -i -e 's/curry2(/\\/*@__PURE__*\\/curry2(/g' lib/es6/index.js",
     "prepublish": "npm run build"
   },
   "repository": {
