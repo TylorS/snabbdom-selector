@@ -21,6 +21,11 @@ describe('select', () => {
     assert.strictEqual(typeof select(''), 'function');
   });
 
+  it('should accept undefined as the node parameter', () => {
+    const result = select('div', undefined);
+    assert.equal(result.length, 0);
+  });
+
   describe('given a selector and a VNode', () => {
 
     it('should ignore falsy children', () => {
