@@ -41,7 +41,7 @@ function addParent (vNode: VNode, isParent: boolean, parent?: VNode): void {
     vNode.data = {};
   }
 
-  if (!vNode.data[parentSymbol]) {
+  if (!vNode.data[parentSymbol as any]) {
     Object.defineProperty(vNode.data, parentSymbol, {
       value: parent,
     });

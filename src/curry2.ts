@@ -9,4 +9,4 @@ export function curry2 (select: Select): Selector {
       default: return select(sel, vNode);
     }
   } as Selector;
-};
+}
