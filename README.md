@@ -11,7 +11,7 @@ npm install snabbdom-selector
 ## Basic Usage
 ```js
 import { select } from 'snabbdom-selector'
-import * as h from 'snabbdom/h'
+import { h } from 'snabbdom'
 
 const vNode = h('div', {}, [
   h('div.test', {}, [

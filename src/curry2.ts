@@ -1,4 +1,4 @@
-import { VNode } from 'snabbdom/vnode';
+import { VNode } from 'snabbdom';
 import { Select, Selector } from './types';
 
 export function curry2 (select: Select): Selector {

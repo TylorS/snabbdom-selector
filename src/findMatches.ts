@@ -1,4 +1,4 @@
-import { VNode } from 'snabbdom/vnode';
+import { VNode } from 'snabbdom';
 import { querySelector } from './query';
 import parentSymbol from './parent-symbol';
 

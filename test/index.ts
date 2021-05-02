@@ -1,8 +1,6 @@
 import * as assert from 'assert';
 import { select } from '../src';
-import { VNode } from 'snabbdom/vnode';
-import h from 'snabbdom/h';
-import thunk from 'snabbdom/thunk';
+import { h, thunk, VNode } from 'snabbdom';
 
 function div (children: VNode[] = []): VNode {
   return h('div', {}, children);
