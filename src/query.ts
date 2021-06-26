@@ -1,5 +1,5 @@
 import { Options, createQuerySelector, createMatches, Selector } from 'tree-selector';
-import { VNode } from 'snabbdom/vnode';
+import { VNode } from 'snabbdom';
 import { selectorParser } from './selectorParser';
 import { classNameFromVNode } from './classNameFromVNode';
 import parentSymbol from './parent-symbol';
